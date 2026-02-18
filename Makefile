@@ -1,25 +1,16 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: your-login <your-login@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/02/18 02:35:00 by your-login          #+#    #+#              #
-#    Updated: 2026/02/18 02:35:00 by your-login         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME        = string.a
 CC          = cc
-CFLAGS      = -Wall -Wextra -Werror
+CFLAGS      = -Wall -Wextra -Werror -I includes
 RM          = rm -f
 
-SRCS        = string.c libft_functions.c
+SRC_DIR     = src/
+SRC_FILES   = string.c libft_functions.c
+SRCS        = $(addprefix $(SRC_DIR), $(SRC_FILES))
 
 OBJS        = $(SRCS:.c=.o)
 
-all: $(NAME) clean
+all: $(NAME)
+	$(MAKE) clean
 
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
